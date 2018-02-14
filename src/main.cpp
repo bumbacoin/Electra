@@ -808,11 +808,7 @@ int CMerkleTx::GetBlocksToMaturity() const
 {
     if (!(IsCoinBase() || IsCoinStake()))
         return 0;
-
-	if(pindexBest->nHeight > LAST_OLD_POS_BLOCK)
-    		return max(0, (nCoinbaseMaturity+1) - GetDepthInMainChain());
-    	else
-    		return max(0, (nCoinbaseMaturity+422) - GetDepthInMainChain());
+    return max(0, (nCoinbaseMaturity+1) - GetDepthInMainChain());
 }	
 
 bool CMerkleTx::AcceptToMemoryPool(CTxDB& txdb, bool fCheckInputs)
